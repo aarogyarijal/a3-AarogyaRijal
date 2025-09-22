@@ -23,7 +23,7 @@ router.get('/login', function(req, res, next) {
     res.sendFile(path.join(__dirname, '..', 'public', 'login.html'));
 });
 
-/* POST store mileage data */
+/* POST mileage data */
 router.post('/api/mileage', async function(req, res, next) {
     if (!req.isAuthenticated || !req.isAuthenticated()) {
         return res.status(401).json({ error: 'Unauthorized' });
@@ -39,10 +39,9 @@ router.post('/api/mileage', async function(req, res, next) {
         // First, delete all existing records for this user
         await db.collection('mileage').deleteMany({ username: username });
         
-        // Then insert the updated data (only if there's data to insert)
+        // Then insert the updated data
         if (mileageData.length > 0) {
             const dataToInsert = mileageData.map(entry => {
-                // Remove MongoDB _id field if it exists to avoid duplicate key errors
                 const { _id, ...cleanEntry } = entry;
                 return {
                     ...cleanEntry,
