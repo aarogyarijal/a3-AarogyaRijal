@@ -4,10 +4,7 @@ const { MongoClient } = require('mongodb');
 const client = new MongoClient(process.env.MONGODB_URI, {
   serverSelectionTimeoutMS: 30000,
   connectTimeoutMS: 30000,
-  socketTimeoutMS: 30000,
-  tls: true,
-  tlsAllowInvalidCertificates: false,
-  tlsAllowInvalidHostnames: false
+  socketTimeoutMS: 30000
 });
 
 let db;
