@@ -1,7 +1,13 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const client = new MongoClient(process.env.MONGODB_URI, {
+  ssl: true,
+  sslValidate: true,
+  serverSelectionTimeoutMS: 30000,
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 30000
+});
 
 let db;
 
