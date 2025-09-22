@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your vehicle mileage and fuel efficiency. Add, edit, and manage your fuel purchase records.">
     <title>Mileage Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-dark bg-primary" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <span class="navbar-brand">Mileage Tracker</span>
-            <button class="btn btn-outline-light" onclick="logout()">Logout</button>
+            <h1 class="navbar-brand">Mileage Tracker</h1>
+            <button class="btn btn-light" onclick="logout()" aria-label="Logout from your account">Logout</button>
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <main class="container mt-4">
         <div class="row mb-4">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-success text-white">
-                        <h5>Add Mileage Record</h5>
+                        <h2>Add Mileage Record</h2>
                     </div>
                     <div class="card-body">
-                        <form id="mileageForm">
+                        <form id="mileageForm" aria-labelledby="form-heading">
                             <div class="mb-3">
-                                <label for="date">Date</label>
-                                <input type="date" class="form-control" id="date" required>
+                                <label for="date" class="form-label">Date of fuel purchase</label>
+                                <input type="date" class="form-control" id="date" required aria-describedby="date-help">
+                                <small id="date-help" class="form-text">Select the date you purchased fuel</small>
                             </div>
                             <div class="mb-3">
-                                <label for="cost">Cost ($)</label>
-                                <input type="number" step="0.01" class="form-control" id="cost" required>
+                                <label for="cost" class="form-label">Cost ($)</label>
+                                <input type="number" step="0.01" class="form-control" id="cost" required aria-describedby="cost-help">
+                                <small id="cost-help" class="form-text">Enter the total amount paid for fuel</small>
                             </div>
                             <div class="mb-3">
-                                <label for="gallons">Gallons</label>
-                                <input type="number" step="0.01" class="form-control" id="gallons" required>
+                                <label for="gallons" class="form-label">Gallons</label>
+                                <input type="number" step="0.01" class="form-control" id="gallons" required aria-describedby="gallons-help">
+                                <small id="gallons-help" class="form-text">Enter the number of gallons purchased</small>
                             </div>
                             <div class="mb-3">
-                                <label for="totalMileage">Total Mileage</label>
-                                <input type="number" class="form-control" id="totalMileage" required>
+                                <label for="totalMileage" class="form-label">Total Mileage</label>
+                                <input type="number" class="form-control" id="totalMileage" required aria-describedby="mileage-help">
+                                <small id="mileage-help" class="form-text">Enter your vehicle's current odometer reading</small>
                             </div>
                             <button type="submit" class="btn btn-success">Add Record</button>
                         </form>
@@ -49,19 +54,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-info text-white">
-                        <h5>Your Mileage Records</h5>
+                    <div class="card-header bg-dark text-white">
+                        <h2>Your Mileage Records</h2>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" role="table" aria-label="Mileage records data table">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Cost</th>
-                                    <th>Gallons</th>
-                                    <th>Total Mileage</th>
-                                    <th>Cost per Gallon</th>
-                                    <th>Actions</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Cost</th>
+                                    <th scope="col">Gallons</th>
+                                    <th scope="col">Total Mileage</th>
+                                    <th scope="col">Cost per Gallon</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="mileageTable">
@@ -72,7 +77,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="main.js"></script>
 </body>

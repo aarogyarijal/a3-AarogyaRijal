@@ -71,8 +71,8 @@ function displayMileageData() {
                     <td>${record.totalMileage}</td>
                     <td>$${record.cpg}</td>
                     <td>
-                        <button class="btn btn-sm btn-warning" onclick="editRecord(${index})" style="margin-right: 8px;">Edit</button>
-                        <button class="btn btn-sm btn-danger" onclick="deleteRecord(${index})">Delete</button>
+                        <button class="btn btn-sm btn-warning" onclick="editRecord(${index})" style="margin-right: 8px;" aria-label="Edit mileage record from ${record.date}">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRecord(${index})" aria-label="Delete mileage record from ${record.date}">Delete</button>
                     </td>
                 `;
     });
