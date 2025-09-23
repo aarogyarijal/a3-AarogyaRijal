@@ -11,6 +11,9 @@ var authRouter = require('./routes/auth');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for HTTPS detection on Render
+app.set('trust proxy', 1);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
