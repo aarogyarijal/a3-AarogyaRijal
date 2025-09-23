@@ -6,7 +6,9 @@ const { getDatabase } = require('../db');
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: '/oauth2/redirect/github',
+    callbackURL: process.env.NODE_ENV === 'production' 
+        ? `${process.env.BASE_URL}/oauth2/redirect/github`
+        : 'http://localhost:3000/oauth2/redirect/github',
     state: false
 }, async function(accessToken, refreshToken, profile, cb) {
     try {
